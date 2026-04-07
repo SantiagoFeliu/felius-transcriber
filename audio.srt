@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:02,960
+Si simplemente vienes a Cloud y conectas esta herramienta y escribes,
+
+2
+00:00:02,960 --> 00:00:06,720
+dame 50 empresas de alto crecimiento en España con menos de 100 empleados.
+
+3
+00:00:06,720 --> 00:00:10,080
+Este MCP de Cloud va a buscar tuvada a la base de datos de Elite
+
+4
+00:00:10,080 --> 00:00:14,440
+y va a encontrar los desliz altamente cualificados con nombres y mails verificados,
+
+5
+00:00:14,440 --> 00:00:17,560
+sobre el delinqued y un poco de información sobre su negocio también.
+
+6
+00:00:17,560 --> 00:00:20,520
+Es de lejos, hay métodos más potendimas fácil de generación de Elite.
+
+7
+00:00:20,520 --> 00:00:25,520
+Esta herramienta se llama Explorium y puedes conectarla fácilmente con Cloud y usar PRONS para generar Elite.
+
+8
+00:00:25,520 --> 00:00:29,840
+Ets una guía paso a paso a nuestra biblioteca para montar sistemas para tu propio negocio.
+
+9
+00:00:29,840 --> 00:00:34,680
+Simplemente ve al link de perfil y acceden a esta biblioteca de recursos donde podrás encontrar la guía.
+
+10
+00:00:34,680 --> 00:00:38,400
+Y además tendrás acceso a nuestra clase de ratujitas de 2 días en directo.
+
