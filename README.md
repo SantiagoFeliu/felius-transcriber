@@ -13,6 +13,7 @@ Pegás una URL, descarga el audio, lo transcribe localmente y muestra el texto e
 - python-multipart
 
 ## Requisitos
+- ffmpeg (sudo apt install ffmpeg -y)
 - Python 3
 - ffmpeg
 
