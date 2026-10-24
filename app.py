@@ -38,7 +38,7 @@ def transcribe(url: str = Form(...)):
                 "--audio-format", "mp3",
                 "-o", audio_base + ".%(ext)s",
                 url
-            ], check=True, capture_output=True, text=True)
+            ], check=True, capture_output=True, text=True, timeout=180)
 
             audio_path = audio_base + ".mp3"
 
@@ -56,11 +56,15 @@ def transcribe(url: str = Form(...)):
                 capture_output=True,
                 text=True,
                 check=True,
-                env=env
+                env=env,
+                timeout=600
             )
 
             salida = result.stdout.strip() or "Sin transcripción"
             return HTML.format(html.escape(salida))
+
+    except subprocess.TimeoutExpired:
+        return HTML.format("La operación superó el tiempo máximo permitido.")
 
     except subprocess.CalledProcessError as e:
         err = (e.stdout or "") + "\n" + (e.stderr or "")
