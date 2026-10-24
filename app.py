@@ -64,12 +64,10 @@ def transcribe(url: str = Form(...)):
             return HTML.format(html.escape(salida))
 
     except subprocess.TimeoutExpired:
-        return HTML.format("La operación superó el tiempo máximo permitido.")
+        return HTMLResponse(HTML.format("La operación superó el tiempo máximo permitido."), status_code=504)
 
-    except subprocess.CalledProcessError as e:
-        err = (e.stdout or "") + "\n" + (e.stderr or "")
-        return HTML.format(html.escape(err.strip() or str(e)))
+    except subprocess.CalledProcessError:
+        return HTMLResponse(HTML.format("No se pudo completar la transcripción."), status_code=502)
 
-    except Exception as e:
-        return HTML.format(html.escape(str(e)))
-
+    except Exception:
+        return HTMLResponse(HTML.format("Ocurrió un error interno durante la transcripción."), status_code=500)
