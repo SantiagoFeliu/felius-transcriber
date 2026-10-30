@@ -4,6 +4,7 @@ import subprocess
 import tempfile
 import os
 import html
+from urllib.parse import urlsplit
 
 app = FastAPI()
 
@@ -29,6 +30,10 @@ def home():
 @app.post("/", response_class=HTMLResponse)
 def transcribe(url: str = Form(...)):
     try:
+        parsed = urlsplit(url.strip())
+        host = (parsed.hostname or "").lower()
+        if parsed.scheme != "https" or not (host == "tiktok.com" or host.endswith(".tiktok.com")):
+            return HTMLResponse(HTML.format("Ingresá una URL HTTPS válida de TikTok."), status_code=400)
         with tempfile.TemporaryDirectory() as tmp:
             audio_base = os.path.join(tmp, "audio")
 

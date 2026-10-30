@@ -10,7 +10,7 @@ Felius Transcriber is a small web application for extracting speech from online 
 
 ## What it does
 
-1. Accepts a video URL through a simple browser form.
+1. Accepts an HTTPS TikTok video URL through a simple browser form.
 2. Uses `yt-dlp` to extract audio as MP3.
 3. Runs the `whisper` command locally using the `base` model, CPU execution and Spanish language settings.
 4. Displays the transcription command's console output in the browser.
@@ -63,7 +63,7 @@ Confirm that `ffmpeg`, `yt-dlp` and `whisper` are available before running the a
 uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 
-Open **http://127.0.0.1:8000** in your browser, paste a supported video URL and submit the form.
+Open **http://127.0.0.1:8000** in your browser, paste an HTTPS TikTok video URL and submit the form.
 
 The implementation currently calls Whisper with these fixed options:
 
@@ -79,8 +79,8 @@ The model may need to be downloaded on first use.
 - There is no authentication, URL allowlist, request queue or rate limiting; **do not expose the service publicly**.
 - The request runs external processes synchronously, so processing may take time.
 - Video downloads depend on source availability, site restrictions and `yt-dlp` support.
-- The app displays command output and error details in the browser. Do not submit sensitive URLs or content.
-- No automated test suite or production deployment guarantees are demonstrated.
+- The app displays the transcription command output in the browser; operational errors are summarized. Do not submit sensitive URLs or content.
+- Automated unit tests use mocked subprocess calls; they do not demonstrate a successful real download or transcription. No production deployment guarantees are demonstrated.
 - Although Whisper may create auxiliary output files, the current application does not expose them through its interface.
 
 ## Why it exists
@@ -99,8 +99,8 @@ Use a short, non-sensitive Spanish-language video that you have permission to do
 4. Try an unavailable or invalid URL and document the visible failure; avoid claiming that all download failures are handled gracefully.
 5. Confirm that temporary audio is removed after the request completes.
 
-**Evidence boundary:** this is a manual test protocol. No automated tests, benchmark accuracy, subtitle-export interface, or tested deployment matrix are claimed. Transcription quality depends on audio quality, accent, language and the Whisper model.
+**Evidence boundary:** this is a manual test protocol. Automated tests cover HTTP behavior with mocked subprocesses; no real-media integration test, benchmark accuracy, subtitle-export interface, or tested deployment matrix is claimed. Transcription quality depends on audio quality, accent, language and the Whisper model.
 
 ## Privacy and usage boundaries
 
-Use only media you are authorized to process. Although transcription runs locally, downloading media contacts the remote source. The application has no authentication or URL allowlist, so keep it on localhost and avoid confidential URLs.
+Use only media you are authorized to process. Although transcription runs locally, downloading media contacts the remote source. The application accepts HTTPS TikTok URLs but does not constrain redirects or all possible downloader network activity. It has no authentication; keep it on localhost and avoid confidential URLs.
