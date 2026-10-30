@@ -1,5 +1,7 @@
 # Felius Transcriber
 
+[![Tests](https://github.com/SantiagoFeliu/felius-transcriber/actions/workflows/tests.yml/badge.svg)](https://github.com/SantiagoFeliu/felius-transcriber/actions/workflows/tests.yml)
+
 **Local video-to-text workflow — Python, FastAPI, yt-dlp and OpenAI Whisper.**
 
 Felius Transcriber is a small web application for extracting speech from online videos and reviewing the resulting text. It was built to make short technical videos easier to study, compare and assess without sending audio to a hosted transcription API.
