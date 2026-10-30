@@ -86,3 +86,19 @@ The model may need to be downloaded on first use.
 Technical information is often shared in short videos rather than searchable documentation. This utility provides a local workflow for turning spoken material into text that can be inspected and compared.
 
 **Scope:** A practical, source-available local implementation—not a hosted transcription service or a production-ready media processing platform.
+
+## Reproducible acceptance check
+
+Use a short, non-sensitive Spanish-language video that you have permission to download.
+
+1. Confirm `ffmpeg -version`, `yt-dlp --version`, and `whisper --help` run in the active environment.
+2. Start the app on `127.0.0.1:8000`; open the local browser form.
+3. Submit the video URL and verify that the result contains recognizable spoken words.
+4. Try an unavailable or invalid URL and document the visible failure; avoid claiming that all download failures are handled gracefully.
+5. Confirm that temporary audio is removed after the request completes.
+
+**Evidence boundary:** this is a manual test protocol. No automated tests, benchmark accuracy, subtitle-export interface, or tested deployment matrix are claimed. Transcription quality depends on audio quality, accent, language and the Whisper model.
+
+## Privacy and usage boundaries
+
+Use only media you are authorized to process. Although transcription runs locally, downloading media contacts the remote source. The application has no authentication or URL allowlist, so keep it on localhost and avoid confidential URLs.
